@@ -23,8 +23,12 @@ public class ventanaPrincioal extends javax.swing.JFrame {
     public int ran;
     public int err;
     public String res[];
+    // Arreglo con cada una de las letras de la palabra ingresada por el usuario
     char arreglo[];
     String msj;
+    
+    /* Arreglo de caracteres con guiones bajos de la misma cantidad que la palabra */
+    char aciertos[];
 
     /**
      * Creates new form ventanaPrincioal
@@ -55,8 +59,6 @@ public class ventanaPrincioal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -69,10 +71,9 @@ public class ventanaPrincioal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jTextPane1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jScrollPane1.setViewportView(jTextPane1);
 
         jButton1.setText("ESPAÑOL");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +104,11 @@ public class ventanaPrincioal extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 40, 30));
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
+        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextPane1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextPane1.setText("jLabel9");
+        jTextPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,7 +120,7 @@ public class ventanaPrincioal extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -122,7 +128,7 @@ public class ventanaPrincioal extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(101, 101, 101)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(90, Short.MAX_VALUE))
@@ -142,7 +148,7 @@ public class ventanaPrincioal extends javax.swing.JFrame {
                             .addComponent(jButton2)
                             .addComponent(jButton3))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
@@ -201,40 +207,43 @@ public class ventanaPrincioal extends javax.swing.JFrame {
                                     for (int k = 0; k < arreglo.length; k++) {
 
                                         if (arreglo[k] == c) {
-                                            res[k] = c + "";
+                                            // En el arreglo de aciertos cambiamos el guion bajo por la letra acertada
+                                            aciertos[k] = c;
+                                            //res[k] = c + "";
                                             encontro = true;
                                         }
                                     }
 
                                     if (encontro) {
-                                        jTextPane1.setText("");
-                                        for (int k = 0; k < arreglo.length; k++) {
-                                            if (arreglo[k] == c) {
-                                                jTextPane1.setText(jTextPane1.getText() + c + "");
-                                                System.out.println(jTextPane1.getText());
-//                                                }
-                                            } else {
-                                                jTextPane1.setText(jTextPane1.getText() + "_");
-                                                
-                                                
-                                                String p = jTextPane1.getText();
-                                         //       String alf += p;
-                                                char[] a = p.toCharArray();
-//                                                jTextPane1.setText(jTextPane1.getText() +a + " _ ");
-//                                                System.out.println(a);
-//                                                for (int x = 0; x < a.length; x++) {
-//                                                    if(arreglo[k] != a[x]){
-//                                                          jTextPane1.setText(jTextPane1.getText()  + " _ ");
-//                                                        a[x] = arreglo[k];
-//                                                        
-//                                                        System.out.println("entro :(");
-//                                                        System.out.println(a[x]);
-////                                                        jTextPane1.setText();
-//                                                        
-//                                                    }
-//                                                } 
-                                            }
-                                        }
+                                        mostrar();
+//                                        jTextPane1.setText("");
+//                                        for (int k = 0; k < arreglo.length; k++) {
+//                                            if (arreglo[k] == c) {
+//                                                jTextPane1.setText(jTextPane1.getText() + c + "");
+//                                                System.out.println(jTextPane1.getText());
+////                                                }
+//                                            } else {
+//                                                jTextPane1.setText(jTextPane1.getText() + "_");
+//                                                
+//                                                
+//                                                String p = jTextPane1.getText();
+//                                         //       String alf += p;
+//                                                char[] a = p.toCharArray();
+////                                                jTextPane1.setText(jTextPane1.getText() +a + " _ ");
+////                                                System.out.println(a);
+////                                                for (int x = 0; x < a.length; x++) {
+////                                                    if(arreglo[k] != a[x]){
+////                                                          jTextPane1.setText(jTextPane1.getText()  + " _ ");
+////                                                        a[x] = arreglo[k];
+////                                                        
+////                                                        System.out.println("entro :(");
+////                                                        System.out.println(a[x]);
+//////                                                        jTextPane1.setText();
+////                                                        
+////                                                    }
+////                                                } 
+//                                            }
+//                                        }
 
                                     } else {
                                         err++;
@@ -268,16 +277,40 @@ public class ventanaPrincioal extends javax.swing.JFrame {
         msj = msj.toUpperCase();
         arreglo = msj.toCharArray();
 
-        int j = 0;
-        for (int i = 0; i < arreglo.length; i++) {
-            res = new String[arreglo[i]];
-            jTextPane1.setText(jTextPane1.getText() + " _ ");
-            res[j++] = "_";
-        }
-        jTextPane1.setText(jTextPane1.getText() + "\n");
-        res[j++] = " ";
-    }
+//        int j = 0;
+//        for (int i = 0; i < arreglo.length; i++) {
+//            res = new String[arreglo[i]];
+//            jTextPane1.setText(jTextPane1.getText() + " _ ");
+//            res[j++] = "_";
+//        }
+//        jTextPane1.setText(jTextPane1.getText() + "\n");
+//        res[j++] = " ";
+        // arreglo de caracteres con guiones bajos (donde vamos guardando los aciertos)
+        change();
+        // Mostrar en el label los guiones bajos
+        mostrar();
+    } 
 
+    /**
+     * del arreglo de caracteres de la palabra, pasa al arreglo de aciertos y los remplaza por guion bajo
+     */
+    public void change(){
+        aciertos = new char[arreglo.length];
+        for (int i = 0; i < arreglo.length; i++) {
+            aciertos[i] = '_';
+        }
+    }
+    
+    /**
+     * muestra los caracteres acertados
+     */
+    public void mostrar(){
+        String cadena = "";
+        for (int i = 0; i < aciertos.length; i++) {
+            cadena += aciertos[i]+" ";
+        }
+        jTextPane1.setText(cadena+"\n");
+    }
     /**
      * @param args the command line arguments
      */
@@ -328,8 +361,7 @@ public class ventanaPrincioal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel jTextPane1;
     // End of variables declaration//GEN-END:variables
 
 }
