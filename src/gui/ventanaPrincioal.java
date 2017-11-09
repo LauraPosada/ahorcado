@@ -46,6 +46,8 @@ public class ventanaPrincioal extends javax.swing.JFrame {
         imgs[3] = new ImageIcon(getClass().getResource("/img/ahorcado5.png"));
         imgs[4] = new ImageIcon(getClass().getResource("/img/ahorcado6.png"));
         imgs[5] = new ImageIcon(getClass().getResource("/img/ahorcado8.png"));
+        this.setLocationRelativeTo(this);
+
 
     }
 
@@ -96,7 +98,6 @@ public class ventanaPrincioal extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ahorcado1.png"))); // NOI18N
-        jLabel3.setText("o");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 110));
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 80, 40));
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 80, 30));
@@ -106,7 +107,6 @@ public class ventanaPrincioal extends javax.swing.JFrame {
 
         jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTextPane1.setForeground(new java.awt.Color(51, 51, 51));
-        jTextPane1.setText("jLabel9");
         jTextPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
